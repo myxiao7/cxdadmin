@@ -1,6 +1,9 @@
 package com.zh.cxdadmin.ui;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.widget.RadioButton;
@@ -9,6 +12,13 @@ import android.widget.TextView;
 
 import com.zh.cxdadmin.R;
 import com.zh.cxdadmin.base.BaseActivity;
+import com.zh.cxdadmin.ui.fragment.OrderFragment;
+import com.zh.cxdadmin.ui.fragment.SellerFragment;
+import com.zh.cxdadmin.ui.order.testFragment;
+import com.zh.cxdadmin.view.ScrollViewPager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -20,7 +30,7 @@ public class MainActivity extends BaseActivity {
     @Bind(R.id.toolbar)
     Toolbar toolbar;
     @Bind(R.id.main_viewpager)
-    ViewPager mainViewpager;
+    ScrollViewPager mainViewpager;
     @Bind(R.id.main_tab01)
     RadioButton mainTab01;
     @Bind(R.id.main_tab02)
@@ -29,6 +39,8 @@ public class MainActivity extends BaseActivity {
     RadioButton mainTab03;
     @Bind(R.id.main_radiogroup)
     RadioGroup mainRadiogroup;
+
+    private List<Fragment> fragments = new ArrayList<>();
 
     @Override
     public void onBackPressed() {
@@ -45,8 +57,67 @@ public class MainActivity extends BaseActivity {
 
     private void init() {
         ButterKnife.bind(this);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        toolbarTv.setText("订单");
+        Fragment fragment01 = OrderFragment.newInstance();
+        Fragment fragment02 = SellerFragment.newInstance();
+        Fragment fragment03 = new testFragment();
+        fragments.add(fragment01);
+        fragments.add(fragment02);
+        fragments.add(fragment03);
+        TabFragmentAdapter adapter = new TabFragmentAdapter(getSupportFragmentManager(), fragments);
+        mainViewpager.setScrollEnable(false);
+        mainViewpager.setAdapter(adapter);
+
+        mainViewpager.setCurrentItem(0);
+        mainViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                RadioButton radioButton = (RadioButton) mainRadiogroup.getChildAt(position);
+                radioButton.setChecked(true);
+                toolbarTv.setText(radioButton.getText().toString());
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        mainRadiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int indexOfChild = group.indexOfChild(group.findViewById(checkedId));
+                mainViewpager.setCurrentItem(indexOfChild,true);
+            }
+        });
     }
 
+    class TabFragmentAdapter extends FragmentPagerAdapter{
+        private List<Fragment> list;
+
+        public TabFragmentAdapter(FragmentManager fm, List<Fragment> list) {
+            super(fm);
+            this.list=list;
+        }
+
+
+        @Override
+        public Fragment getItem(int position) {
+            return list.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return list.size();
+        }
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
