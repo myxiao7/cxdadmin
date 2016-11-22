@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import com.zh.cxdadmin.R;
 import com.zh.cxdadmin.base.BaseActivity;
-import com.zh.cxdadmin.ui.fragment.OrderFragment;
-import com.zh.cxdadmin.ui.fragment.SellerFragment;
+import com.zh.cxdadmin.ui.fragment.OrderSwitchFragment;
+import com.zh.cxdadmin.ui.fragment.SellerSwitchFragment;
 import com.zh.cxdadmin.ui.order.testFragment;
 import com.zh.cxdadmin.view.ScrollViewPager;
 
@@ -60,8 +60,8 @@ public class MainActivity extends BaseActivity {
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         toolbarTv.setText("订单");
-        Fragment fragment01 = OrderFragment.newInstance();
-        Fragment fragment02 = SellerFragment.newInstance();
+        Fragment fragment01 = OrderSwitchFragment.newInstance();
+        Fragment fragment02 = SellerSwitchFragment.newInstance();
         Fragment fragment03 = new testFragment();
         fragments.add(fragment01);
         fragments.add(fragment02);

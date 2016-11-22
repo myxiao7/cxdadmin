@@ -40,7 +40,14 @@
     <string name="main_tab01">订单</string>
     <string name="main_tab02">加盟商</string>
     <string name="main_tab03">用户</string>
+    
+    <string name="order_item01">待接单</string>
+    <string name="order_item02">待服务</string>
+    <string name="order_item03">已完成</string>
 
+    <string name="seller_item01">已通过</string>
+    <string name="seller_item02">待审核</string>
+    <string name="seller_item03">未通过</string>
 
     <string name="today_order">今日接单</string>
     <string name="today_money">我的收入</string>

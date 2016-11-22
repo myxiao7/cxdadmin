@@ -18,23 +18,22 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * 订单
- * Created by win7 on 2016/11/21.
+ * Created by dell on 2016/11/22.
  */
 
-public class SellerFragment extends BaseFragment {
+public class SellerSwitchFragment extends BaseFragment {
 
     @Bind(R.id.viewpagertab)
     SmartTabLayout viewpagertab;
     @Bind(R.id.viewpager)
     ViewPager viewpager;
 
-    public static SellerFragment newInstance() {
-        SellerFragment orderFragment = new SellerFragment();
+    public static SellerSwitchFragment newInstance() {
+        SellerSwitchFragment sellerSwitchFragment = new SellerSwitchFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("", 0);
-        orderFragment.setArguments(bundle);
-        return orderFragment;
+        sellerSwitchFragment.setArguments(bundle);
+        return sellerSwitchFragment;
     }
 
     @Nullable
@@ -45,10 +44,10 @@ public class SellerFragment extends BaseFragment {
 
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(getChildFragmentManager(),
                 FragmentPagerItems.with(activity)
-                        .add("已通过", testFragment.class)
-                        .add("待审核", testFragment.class)
-                        .add("未审核", testFragment.class)
-        .create());
+                        .add(R.string.seller_item01, testFragment.class)
+                        .add(R.string.seller_item02, testFragment.class)
+                        .add(R.string.seller_item03, testFragment.class)
+                        .create());
         viewpager.setAdapter(adapter);
         viewpagertab.setViewPager(viewpager);
         return view;
