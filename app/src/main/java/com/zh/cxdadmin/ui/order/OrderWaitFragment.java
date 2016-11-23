@@ -8,8 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zh.cxdadmin.R;
+import com.zh.cxdadmin.adapter.OrderWaitAdapter;
 import com.zh.cxdadmin.base.BaseFragment;
+import com.zh.cxdadmin.entity.OrderEntity;
 import com.zh.cxdadmin.view.xlistview.XListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -19,9 +24,11 @@ import butterknife.ButterKnife;
  */
 
 public class OrderWaitFragment extends BaseFragment {
-
     @Bind(R.id.listview)
     XListView listview;
+
+    private List<OrderEntity> list = new ArrayList<>();
+    private OrderWaitAdapter adapter;
 
     public static OrderWaitFragment newInstance() {
         OrderWaitFragment orderWaitFragment = new OrderWaitFragment();
@@ -35,6 +42,14 @@ public class OrderWaitFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.listview, container, false);
         ButterKnife.bind(this, view);
+        init();
+        adapter = new OrderWaitAdapter(activity, list);
+        listview.setAdapter(adapter);
+        return view;
+
+    }
+
+    private void init() {
         listview.setPullRefreshEnable(true);
         listview.setPullLoadEnable(true);
         listview.setXListViewListener(new XListView.IXListViewListener() {
@@ -53,10 +68,11 @@ public class OrderWaitFragment extends BaseFragment {
 
             }
         });
-        return view;
-
     }
 
+    private void getOrderList(){
+
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();

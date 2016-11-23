@@ -26,25 +26,6 @@ public class SharedData {
      */
     public static final String USERPWD = "userpwd";
 
-    /**
-     * 电话
-     */
-    public static final String USERPHONE = "userphone";
-
-    /**
-     * 经杜
-     */
-    public static final String CURRENTLON = "CURRENTLON";
-    /**
-     * 纬度
-     */
-    public static final String CURRENTLAT = "CURRENTLAT";
-    /**
-     * 地址
-     */
-    public static final String CURRENTADD = "CURRENTADD";
-
-
     private static SharedPreferences sharedPreferences;
 
     public static SharedPreferences getShare() {
@@ -112,81 +93,4 @@ public class SharedData {
     public static void saveUserPwd(String pwd) {
         getShare().edit().putString(USERPWD, pwd).commit();
     }
-
-    /**
-     * 获取电话
-     *
-     * @return
-     */
-    public static String getUserPhone() {
-        String host = getShare().getString(USERPHONE, null);
-        return host;
-    }
-
-    /**
-     * 保存电话
-     *
-     * @return
-     */
-    public static void saveUserPhone(String phone) {
-        getShare().edit().putString(USERPHONE, phone).commit();
-    }
-
-    /**
-     * 获取当前经度
-     *
-     * @return
-     */
-    public static String getCurrentlon() {
-        String host = getShare().getString(CURRENTLON, null);
-        return host;
-    }
-
-    /**
-     * 保存当前经度
-     *
-     * @return
-     */
-    public static void saveCurrentlon(String lon) {
-        getShare().edit().putString(CURRENTLON, lon).commit();
-    }
-
-    /**
-     * 获取当前纬度
-     *
-     * @return
-     */
-    public static String getCurrentlat() {
-        String host = getShare().getString(CURRENTLAT, null);
-        return host;
-    }
-
-    /**
-     * 保存当前纬度
-     *
-     * @return
-     */
-    public static void saveCurrentlat(String lat) {
-        getShare().edit().putString(CURRENTLAT, lat).commit();
-    }
-
-/**
-     * 获取当前地址
-     *
-     * @return
-     */
-    public static String getCurrentAdd() {
-        String host = getShare().getString(CURRENTADD, null);
-        return host;
-    }
-
-    /**
-     * 保存当前地址
-     *
-     * @return
-     */
-    public static void saveCurrentAdd(String add) {
-        getShare().edit().putString(CURRENTADD, add).commit();
-    }
-
 }
