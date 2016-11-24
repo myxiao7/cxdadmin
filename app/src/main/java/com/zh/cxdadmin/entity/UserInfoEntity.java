@@ -1,9 +1,12 @@
 package com.zh.cxdadmin.entity;
 
+import org.xutils.db.annotation.Column;
+import org.xutils.db.annotation.Table;
+
 /**
  * Created by win7 on 2016/11/23.
  */
-
+@Table(name = "UserInfoEntity")
 public class UserInfoEntity {
 
     /**
@@ -21,20 +24,42 @@ public class UserInfoEntity {
      * tocken : 0f7da37890aa4e41
      * username : chuxiaoding
      */
-
+    @Column(name="ids", isId = true)
+    private int ids;
+    @Column(name = "companyId")
     private String companyId;
+    @Column(name = "companyLevel")
     private int companyLevel;
+    @Column(name = "companyName")
     private String companyName;
+    @Column(name = "departmentId")
     private String departmentId;
+    @Column(name = "hireDate")
     private String hireDate;
+    @Column(name = "id")
     private int id;
+    @Column(name = "isManager")
     private int isManager;
+    @Column(name = "name")
     private String name;
+    @Column(name = "password")
     private String password;
+    @Column(name = "sfzh")
     private String sfzh;
+    @Column(name = "sjhm")
     private String sjhm;
+    @Column(name = "tocken")
     private String tocken;
+    @Column(name = "username")
     private String username;
+
+    public int getIds() {
+        return ids;
+    }
+
+    public void setIds(int ids) {
+        this.ids = ids;
+    }
 
     public String getCompanyId() {
         return companyId;

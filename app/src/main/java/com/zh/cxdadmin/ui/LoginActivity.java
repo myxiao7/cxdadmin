@@ -105,9 +105,9 @@ public class LoginActivity extends BaseActivity {
                 if (entity.isSuccee()) {
                     ToastUtil.showShort("登录成功");
                     //保存用户信息
-                    /*DbUtils.getInstance().clearPersonInfo();
+                    DbUtils.getInstance().clearPersonInfo();
 //                    entity.getOperatorDTO().setIspass(1);
-                    DbUtils.getInstance().savePersonInfo(entity.getOperatorDTO());*/
+                    DbUtils.getInstance().savePersonInfo(entity.getManagerDTO());
                     SharedData.saveUserName(loginNameTxt.getText().toString());
                     SharedData.saveUserPwd(loginPwdTxt.getText().toString());
 

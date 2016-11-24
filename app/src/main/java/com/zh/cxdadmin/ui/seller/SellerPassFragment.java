@@ -1,9 +1,7 @@
-package com.zh.cxdadmin.ui.order;
+package com.zh.cxdadmin.ui.seller;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +9,12 @@ import android.view.ViewGroup;
 import com.google.gson.reflect.TypeToken;
 import com.zh.cxdadmin.R;
 import com.zh.cxdadmin.adapter.OrderWaitAdapter;
+import com.zh.cxdadmin.adapter.SellerAdapter;
 import com.zh.cxdadmin.base.BaseFragment;
 import com.zh.cxdadmin.config.HttpPath;
 import com.zh.cxdadmin.entity.JsonModel;
 import com.zh.cxdadmin.entity.OrderEntity;
-import com.zh.cxdadmin.entity.OrdrListEntity;
+import com.zh.cxdadmin.entity.SellerEntity;
 import com.zh.cxdadmin.entity.UserInfoEntity;
 import com.zh.cxdadmin.http.HttpUtil;
 import com.zh.cxdadmin.http.RequestCallBack;
@@ -37,22 +36,22 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * 待接单
+ * 已通过
  * Created by dell on 2016/11/22.
  */
 
-public class OrderWaitFragment extends BaseFragment {
+public class SellerPassFragment extends BaseFragment {
     private static final String TAG = "OrderWaitFragment";
     @Bind(R.id.listview)
     XListView listview;
 
-    private List<OrderEntity> list = new ArrayList<>();
-    private OrderWaitAdapter adapter;
+    private List<SellerEntity> list = new ArrayList<>();
+    private SellerAdapter adapter;
     private UserInfoEntity entity;
     private int pageIndex = 1;
 
-    public static OrderWaitFragment newInstance() {
-        OrderWaitFragment orderWaitFragment = new OrderWaitFragment();
+    public static SellerPassFragment newInstance() {
+        SellerPassFragment orderWaitFragment = new SellerPassFragment();
         Bundle bundle = new Bundle();
         orderWaitFragment.setArguments(bundle);
         return orderWaitFragment;
@@ -64,7 +63,7 @@ public class OrderWaitFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.listview, container, false);
         ButterKnife.bind(this, view);
         init();
-        adapter = new OrderWaitAdapter(activity, list);
+        adapter = new SellerAdapter(activity, list);
         listview.setAdapter(adapter);
         getOrderList(true);
         return view;
@@ -105,11 +104,11 @@ public class OrderWaitFragment extends BaseFragment {
         }else{
             pageIndex++;
         }
-        String path = HttpPath.getPath(HttpPath.GETORDERLIST);
+        String path = HttpPath.getPath(HttpPath.GETCELLERLIST);
         RequestParams params = HttpUtil.params(path);
         params.addBodyParameter("uid", entity.getId()+"");
         params.addBodyParameter("tockens", entity.getTocken());
-        params.addBodyParameter("type", "0");
+        params.addBodyParameter("type", "1");
         params.addBodyParameter("rows", "10");
         params.addBodyParameter("page", pageIndex+"");
         params.addBodyParameter("sidx", "");
@@ -119,14 +118,14 @@ public class OrderWaitFragment extends BaseFragment {
             public void onSuccess(String result) {
                 super.onSuccess(result);
                 LogUtil.d(result);
-                Type type = new TypeToken<JsonModel<List<OrderEntity>>>(){}.getType();
-                JsonModel<List<OrderEntity>> jsonModel = GsonUtil.GsonToBean(result, type);
+                Type type = new TypeToken<JsonModel<List<SellerEntity>>>(){}.getType();
+                JsonModel<List<SellerEntity>> jsonModel = GsonUtil.GsonToBean(result, type);
                 if(jsonModel.isSuccess()){
                     if(isRefresh){
                         list.clear();
                         if(jsonModel.hasData()){
                             list = jsonModel.getDataList();
-                            adapter = new OrderWaitAdapter(activity, list);
+                            adapter = new SellerAdapter(activity, list);
                             listview.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
                         }else{

@@ -31,10 +31,10 @@ public class HttpUtil {
     /**
      *获取请求参数
      */
-    public  static RequestParams params(){
+    public static RequestParams params(){
         RequestParams params = new RequestParams();
         params.setCharset(CHARSET_UTF8);
-        return  params;
+        return params;
     }
 
     /**

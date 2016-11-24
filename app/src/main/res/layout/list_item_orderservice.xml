@@ -8,7 +8,7 @@
     <LinearLayout
         style="@style/order_list_lin">
         <ImageView
-            android:id="@+id/myorder_list_item_icon_img"
+            android:id="@+id/orderservice_list_item_icon_img"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:src="@mipmap/icon_user_default"
@@ -21,7 +21,7 @@
             android:paddingLeft="10dp"
             >
             <TextView
-                android:id="@+id/myorder_list_item_name_tv"
+                android:id="@+id/orderservice_list_item_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -30,7 +30,7 @@
                 android:textColor="@color/black"
                 />
             <TextView
-                android:id="@+id/myorder_list_item_phone_tv"
+                android:id="@+id/orderservice_list_item_phone_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -39,7 +39,7 @@
                 android:textColor="@color/black"
                 />
             <TextView
-                android:id="@+id/myorder_list_item_order_tv"
+                android:id="@+id/orderservice_list_item_order_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -48,20 +48,22 @@
                 android:textColor="@color/black"
                 android:singleLine="true"
                 android:ellipsize="end"
+                android:visibility="gone"
                 />
         </LinearLayout>
         <ImageView
-            android:id="@+id/myorder_list_item_phone_img"
+            android:id="@+id/orderservice_list_item_phone_img"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="@mipmap/ic_phone"
+            android:visibility="gone"
             />
 
     </LinearLayout>>
     <LinearLayout
         style="@style/order_list_lin">
         <TextView
-            android:id="@+id/myorder_list_item_type_tv"
+            android:id="@+id/orderservice_list_item_type_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
@@ -80,7 +82,7 @@
             android:layout_marginRight="5dp"
             />
         <TextView
-            android:id="@+id/myorder_list_item_add_tv"
+            android:id="@+id/orderservice_list_item_add_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
@@ -100,7 +102,7 @@
             />
 
         <TextView
-            android:id="@+id/myorder_list_item_time_tv"
+            android:id="@+id/orderservice_list_item_time_tv"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -109,7 +111,7 @@
             android:textSize="@dimen/sp18"
             />
         <TextView
-            android:id="@+id/myorder_list_item_price_tv"
+            android:id="@+id/orderservice_list_item_price_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="￥"
@@ -128,7 +130,7 @@
             android:layout_marginRight="5dp"
             />
         <TextView
-            android:id="@+id/myorder_list_item_cartype_tv"
+            android:id="@+id/orderservice_list_item_cartype_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
@@ -138,6 +140,7 @@
     </LinearLayout>
     <LinearLayout
         style="@style/order_list_lin"
+        android:visibility="gone"
         >
         <ImageView
             android:layout_width="20dp"
@@ -151,7 +154,7 @@
             android:gravity="center_vertical"
             >
             <TextView
-                android:id="@+id/myorder_list_item_color_tv"
+                android:id="@+id/orderservice_list_item_color_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -159,7 +162,7 @@
                 android:textSize="@dimen/sp18"
                 />
             <TextView
-                android:id="@+id/myorder_list_item_num_tv"
+                android:id="@+id/orderservice_list_item_num_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -171,9 +174,10 @@
     </LinearLayout>
     <LinearLayout
         style="@style/order_list_lin"
+        android:visibility="gone"
         >
         <TextView
-            android:id="@+id/myorder_list_item_remark_tv"
+            android:id="@+id/orderservice_list_item_remark_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/order_noremark"
@@ -191,9 +195,10 @@
     <LinearLayout
         style="@style/order_list_lin"
         android:gravity="right"
+        android:visibility="gone"
         >
         <TextView
-            android:id="@+id/myorder_list_item_datedes_tv"
+            android:id="@+id/orderservice_list_item_datedes_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="下单时间:"
@@ -202,7 +207,7 @@
             android:textSize="@dimen/sp18"
             />
         <TextView
-            android:id="@+id/myorder_list_item_date_tv"
+            android:id="@+id/orderservice_list_item_date_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""

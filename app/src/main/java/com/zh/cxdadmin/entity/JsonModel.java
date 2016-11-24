@@ -99,7 +99,7 @@ public class JsonModel<T> {
         if(dataList == null){
             return false;
         }
-        if(dataList instanceof List && ((List)dataList).size() < 0){
+        if(dataList instanceof List && ((List)dataList).size() <= 0){
             return false;
         }
         return true;

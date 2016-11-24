@@ -1,21 +1,19 @@
 package com.zh.cxdadmin.ui.order;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gson.reflect.TypeToken;
 import com.zh.cxdadmin.R;
+import com.zh.cxdadmin.adapter.OrderServiceAdapter;
 import com.zh.cxdadmin.adapter.OrderWaitAdapter;
 import com.zh.cxdadmin.base.BaseFragment;
 import com.zh.cxdadmin.config.HttpPath;
 import com.zh.cxdadmin.entity.JsonModel;
 import com.zh.cxdadmin.entity.OrderEntity;
-import com.zh.cxdadmin.entity.OrdrListEntity;
 import com.zh.cxdadmin.entity.UserInfoEntity;
 import com.zh.cxdadmin.http.HttpUtil;
 import com.zh.cxdadmin.http.RequestCallBack;
@@ -37,22 +35,22 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * 待接单
+ * 待服务
  * Created by dell on 2016/11/22.
  */
 
-public class OrderWaitFragment extends BaseFragment {
+public class OrderServiceFragment extends BaseFragment {
     private static final String TAG = "OrderWaitFragment";
     @Bind(R.id.listview)
     XListView listview;
 
     private List<OrderEntity> list = new ArrayList<>();
-    private OrderWaitAdapter adapter;
+    private OrderServiceAdapter adapter;
     private UserInfoEntity entity;
     private int pageIndex = 1;
 
-    public static OrderWaitFragment newInstance() {
-        OrderWaitFragment orderWaitFragment = new OrderWaitFragment();
+    public static OrderServiceFragment newInstance() {
+        OrderServiceFragment orderWaitFragment = new OrderServiceFragment();
         Bundle bundle = new Bundle();
         orderWaitFragment.setArguments(bundle);
         return orderWaitFragment;
@@ -64,7 +62,7 @@ public class OrderWaitFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.listview, container, false);
         ButterKnife.bind(this, view);
         init();
-        adapter = new OrderWaitAdapter(activity, list);
+        adapter = new OrderServiceAdapter(activity, list);
         listview.setAdapter(adapter);
         getOrderList(true);
         return view;
@@ -109,7 +107,7 @@ public class OrderWaitFragment extends BaseFragment {
         RequestParams params = HttpUtil.params(path);
         params.addBodyParameter("uid", entity.getId()+"");
         params.addBodyParameter("tockens", entity.getTocken());
-        params.addBodyParameter("type", "0");
+        params.addBodyParameter("type", "2");
         params.addBodyParameter("rows", "10");
         params.addBodyParameter("page", pageIndex+"");
         params.addBodyParameter("sidx", "");
@@ -126,7 +124,7 @@ public class OrderWaitFragment extends BaseFragment {
                         list.clear();
                         if(jsonModel.hasData()){
                             list = jsonModel.getDataList();
-                            adapter = new OrderWaitAdapter(activity, list);
+                            adapter = new OrderServiceAdapter(activity, list);
                             listview.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
                         }else{

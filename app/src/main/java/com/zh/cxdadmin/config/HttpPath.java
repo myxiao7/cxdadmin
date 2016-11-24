@@ -27,7 +27,7 @@ public class HttpPath {
     /**
      * 获取订单信息
      */
-    public static final String GETORDERLIST = "chuXiaoDing_orders_ appQueryOrders.action";
+    public static final String GETORDERLIST = "chuXiaoDing_orders_appQueryOrders.action";
     /**
      * 获取订单详情
      */

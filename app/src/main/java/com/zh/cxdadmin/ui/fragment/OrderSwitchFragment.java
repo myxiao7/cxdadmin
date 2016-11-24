@@ -2,6 +2,7 @@ package com.zh.cxdadmin.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +12,12 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.zh.cxdadmin.R;
+import com.zh.cxdadmin.adapter.OrderServiceAdapter;
 import com.zh.cxdadmin.base.BaseFragment;
 
+import com.zh.cxdadmin.ui.order.OrderServiceFragment;
 import com.zh.cxdadmin.ui.order.OrderWaitFragment;
+import com.zh.cxdadmin.ui.order.OrderfinishFragment;
 import com.zh.cxdadmin.ui.order.testFragment;
 
 import butterknife.Bind;
@@ -45,14 +49,26 @@ public class OrderSwitchFragment extends BaseFragment {
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(getChildFragmentManager(),
                 FragmentPagerItems.with(activity)
                         .add(R.string.order_item01, OrderWaitFragment.class)
-                        .add(R.string.order_item02, testFragment.class)
-                        .add(R.string.order_item03, testFragment.class)
+                        .add(R.string.order_item02, OrderServiceFragment.class)
+                        .add(R.string.order_item03, OrderfinishFragment.class)
                         .create());
+        viewpager.setOffscreenPageLimit(2);
         viewpager.setAdapter(adapter);
         viewpagertab.setViewPager(viewpager);
         return view;
     }
 
+    /*class MyFragmentPagerItemAdapter extends FragmentPagerItemAdapter{
+
+        public MyFragmentPagerItemAdapter(FragmentManager fm, FragmentPagerItems pages) {
+            super(fm, pages);
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+//            super.destroyItem(container, position, object);
+        }
+    }*/
     @Override
     public void onDestroyView() {
         super.onDestroyView();

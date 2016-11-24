@@ -18,15 +18,15 @@ import com.zh.cxdadmin.utils.ImageLoaderHelper;
 import java.util.List;
 
 /**
- * 待接单Adapter
+ * 待服务Adapter
  * Created by dell on 2016/11/22.
  */
 
-public class OrderWaitAdapter extends BaseAdapter{
+public class OrderServiceAdapter extends BaseAdapter{
     private List<OrderEntity> list;
     private Context context;
 
-    public OrderWaitAdapter(Context context, List<OrderEntity> list) {
+    public OrderServiceAdapter(Context context, List<OrderEntity> list) {
         this.list = list;
         this.context = context;
     }
@@ -50,23 +50,23 @@ public class OrderWaitAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_orderwait, parent, false);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_orderservice, parent, false);
             holder = new ViewHolder();
-            holder.iconImg = (ImageView) convertView.findViewById(R.id.orderwait_list_item_icon_img);
-            holder.nameTv = (TextView) convertView.findViewById(R.id.orderwait_list_item_name_tv);
-            holder.phoneTv = (TextView) convertView.findViewById(R.id.orderwait_list_item_phone_tv);
-            holder.phoneBtn = (ImageView) convertView.findViewById(R.id.orderwait_list_item_phone_img);
-            holder.orderTv = (TextView) convertView.findViewById(R.id.orderwait_list_item_order_tv);
-            holder.typeTv = (TextView) convertView.findViewById(R.id.orderwait_list_item_type_tv);
-            holder.addTv = (TextView) convertView.findViewById(R.id.orderwait_list_item_add_tv);
-            holder.timeTv = (TextView) convertView.findViewById(R.id.orderwait_list_item_time_tv);
-            holder.carTypeTv = (TextView) convertView.findViewById(R.id.orderwait_list_item_cartype_tv);
-            holder.colorTv = (TextView) convertView.findViewById(R.id.orderwait_list_item_color_tv);
-            holder.numTv = (TextView) convertView.findViewById(R.id.orderwait_list_item_num_tv);
-            holder.priceTv = (TextView) convertView.findViewById(R.id.orderwait_list_item_price_tv);
-            holder.dateTv = (TextView) convertView.findViewById(R.id.orderwait_list_item_date_tv);
-            holder.dateDesTv = (TextView) convertView.findViewById(R.id.orderwait_list_item_datedes_tv);
-            holder.remarkTv = (TextView) convertView.findViewById(R.id.orderwait_list_item_remark_tv);
+            holder.iconImg = (ImageView) convertView.findViewById(R.id.orderservice_list_item_icon_img);
+            holder.nameTv = (TextView) convertView.findViewById(R.id.orderservice_list_item_name_tv);
+            holder.phoneTv = (TextView) convertView.findViewById(R.id.orderservice_list_item_phone_tv);
+            holder.phoneBtn = (ImageView) convertView.findViewById(R.id.orderservice_list_item_phone_img);
+            holder.orderTv = (TextView) convertView.findViewById(R.id.orderservice_list_item_order_tv);
+            holder.typeTv = (TextView) convertView.findViewById(R.id.orderservice_list_item_type_tv);
+            holder.addTv = (TextView) convertView.findViewById(R.id.orderservice_list_item_add_tv);
+            holder.timeTv = (TextView) convertView.findViewById(R.id.orderservice_list_item_time_tv);
+            holder.carTypeTv = (TextView) convertView.findViewById(R.id.orderservice_list_item_cartype_tv);
+            holder.colorTv = (TextView) convertView.findViewById(R.id.orderservice_list_item_color_tv);
+            holder.numTv = (TextView) convertView.findViewById(R.id.orderservice_list_item_num_tv);
+            holder.priceTv = (TextView) convertView.findViewById(R.id.orderservice_list_item_price_tv);
+            holder.dateTv = (TextView) convertView.findViewById(R.id.orderservice_list_item_date_tv);
+            holder.dateDesTv = (TextView) convertView.findViewById(R.id.orderservice_list_item_datedes_tv);
+            holder.remarkTv = (TextView) convertView.findViewById(R.id.orderservice_list_item_remark_tv);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -91,10 +91,10 @@ public class OrderWaitAdapter extends BaseAdapter{
             });
         }
 
-        if (!TextUtils.isEmpty(entity.getOrderid())) {
+       /* if (!TextUtils.isEmpty(entity.getOrderid())) {
             //订单号码
             holder.orderTv.setText("订单号:" + entity.getOrderid());
-        }
+        }*/
         if (!TextUtils.isEmpty(entity.getServicetypename())) {
             //洗车类型
             holder.typeTv.setText(entity.getServicetypename());
@@ -111,27 +111,31 @@ public class OrderWaitAdapter extends BaseAdapter{
             //车型
             holder.carTypeTv.setText(entity.getCarbrank());
         }
-        if (!TextUtils.isEmpty(entity.getCarcolor())) {
+       /* if (!TextUtils.isEmpty(entity.getCarcolor())) {
             //颜色
             holder.colorTv.setText(entity.getCarcolor());
-        }
-        if (!TextUtils.isEmpty(entity.getCarno())) {
+        }*/
+       /* if (!TextUtils.isEmpty(entity.getCarno())) {
             //车牌
             holder.numTv.setText(entity.getCarno());
-        }
+        }*/
         if (!TextUtils.isEmpty(entity.getOrderamount() + "")) {
             //价格
             holder.priceTv.setText("￥" + entity.getOrderamount() + "");
         }
-        //下单时间
+       /* if (!TextUtils.isEmpty(entity.getOrderid())) {
+            //订单号码
+            holder.orderTv.setText("订单号:"+entity.getOrderid()+"");
+        }*/
+      /*  //下单时间
         if (!TextUtils.isEmpty(entity.getOrderdate())) {
             holder.dateTv.setText(entity.getOrderdate());
         }
-
-        if (!TextUtils.isEmpty(entity.getRemark())) {
+*/
+        /*if (!TextUtils.isEmpty(entity.getRemark())) {
             //备注
             holder.remarkTv.setText(entity.getRemark());
-        }
+        }*/
         return convertView;
     }
 

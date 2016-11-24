@@ -2,6 +2,7 @@ package com.zh.cxdadmin.utils;
 
 
 import com.zh.cxdadmin.base.BaseApplication;
+import com.zh.cxdadmin.entity.UserInfoEntity;
 
 import org.xutils.DbManager;
 import org.xutils.common.util.LogUtil;
@@ -29,7 +30,7 @@ public class DbUtils {
     /**
      * 保存用户信息
      * @param entity
-     *//*
+     */
     public void savePersonInfo(UserInfoEntity entity){
         try {
             dbManager.save(entity);
@@ -40,9 +41,9 @@ public class DbUtils {
         }
     }
 
-    *//**
+    /**
      *  清空用户信息
-     *//*
+     */
     public void clearPersonInfo(){
         try {
             dbManager.delete(UserInfoEntity.class);
@@ -52,10 +53,10 @@ public class DbUtils {
             e.printStackTrace();
         }
     }
-    *//**
+    /**
      * 获取当前用户信息
      * @return
-     *//*
+     */
     public UserInfoEntity getPersonInfo(){
         UserInfoEntity entity = null;
         try {
@@ -68,7 +69,7 @@ public class DbUtils {
         return entity;
     }
 
-    *//**
+    /**
      * 更新用户状态
      * @return
      *//*

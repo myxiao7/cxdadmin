@@ -13,6 +13,9 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.zh.cxdadmin.R;
 import com.zh.cxdadmin.base.BaseFragment;
 import com.zh.cxdadmin.ui.order.testFragment;
+import com.zh.cxdadmin.ui.seller.SellerNotPassFragment;
+import com.zh.cxdadmin.ui.seller.SellerPassFragment;
+import com.zh.cxdadmin.ui.seller.SellerWaitFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -44,9 +47,9 @@ public class SellerSwitchFragment extends BaseFragment {
 
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(getChildFragmentManager(),
                 FragmentPagerItems.with(activity)
-                        .add(R.string.seller_item01, testFragment.class)
-                        .add(R.string.seller_item02, testFragment.class)
-                        .add(R.string.seller_item03, testFragment.class)
+                        .add(R.string.seller_item01, SellerPassFragment.class)
+                        .add(R.string.seller_item02, SellerWaitFragment.class)
+                        .add(R.string.seller_item03, SellerNotPassFragment.class)
                         .create());
         viewpager.setAdapter(adapter);
         viewpagertab.setViewPager(viewpager);
