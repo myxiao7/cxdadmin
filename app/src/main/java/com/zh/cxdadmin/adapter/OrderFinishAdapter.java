@@ -95,10 +95,6 @@ public class OrderFinishAdapter extends BaseAdapter{
             //洗车类型
             holder.typeTv.setText(entity.getServicetypename());
         }
-        if (!TextUtils.isEmpty(entity.getOrderid())) {
-            //订单号码
-            holder.orderTv.setText("订单号:"+entity.getOrderid()+"");
-        }
         //下单时间
         if (!TextUtils.isEmpty(entity.getOrderdate())) {
             holder.giveTimeTv.setText(entity.getOrderdate());

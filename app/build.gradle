@@ -20,6 +20,7 @@ android {
         manifestPlaceholders = [
                 JPUSH_PKGNAME : applicationId,
                 JPUSH_APPKEY : "378f09c6cfac801e67a1d8a6", //JPush上注册的包名对应的appkey.
+//                JPUSH_APPKEY : "4962db66220546ed2aac7f67", //JPush上注册的包名对应的appkey.
                 JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
         ]
     }
@@ -45,11 +46,12 @@ dependencies {
     compile 'org.xutils:xutils:3.3.25'
     compile 'com.google.code.gson:gson:2.5'
     compile 'com.yanzhenjie:permission:1.0.3'
-    compile('com.github.afollestad.material-dialogs:core:0.8.5.7@aar') {
+    compile('com.github.afollestad.material-dialogs:commons:0.8.5.7@aar') {
         transitive = true
     }
     compile 'cn.jiguang:jpush:2.1.8'  // 此处以SDK 2.1.8版本为例
     compile 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
     //Optional: see how to use the utility.
     compile 'com.ogaclejapan.smarttablayout:utils-v4:1.6.1@aar'
+    compile 'com.bigkoo:alertview:1.0.3'
 }

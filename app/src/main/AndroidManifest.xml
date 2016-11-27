@@ -17,6 +17,27 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.MainActivity"/>
+
+        <activity android:name=".ui.order.ServiceDetailActivity"/>
+        <activity android:name=".ui.order.FinishDetailActivity"/>
+        <receiver
+            android:name=".receiver.MyReceiver"
+            android:enabled="true"
+            >
+            <intent-filter>
+                <!--Required 用户注册SDK的intent-->
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!--Required 用户接收SDK消息的intent-->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <!--Required 用户接收SDK通知栏信息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <!--Required 用户打开自定义通知栏的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <category android:name="com.zh.xiche" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

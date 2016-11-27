@@ -6,15 +6,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.zh.cxdadmin.R;
 import com.zh.cxdadmin.base.BaseActivity;
+import com.zh.cxdadmin.ui.fragment.CustomerFragment;
 import com.zh.cxdadmin.ui.fragment.OrderSwitchFragment;
 import com.zh.cxdadmin.ui.fragment.SellerSwitchFragment;
-import com.zh.cxdadmin.ui.order.testFragment;
 import com.zh.cxdadmin.view.ScrollViewPager;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity{
 
     @Bind(R.id.toolbar_tv)
     TextView toolbarTv;
@@ -62,7 +63,7 @@ public class MainActivity extends BaseActivity {
         toolbarTv.setText("订单");
         Fragment fragment01 = OrderSwitchFragment.newInstance();
         Fragment fragment02 = SellerSwitchFragment.newInstance();
-        Fragment fragment03 = new testFragment();
+        Fragment fragment03 = CustomerFragment.newInstance();
         fragments.add(fragment01);
         fragments.add(fragment02);
         fragments.add(fragment03);
@@ -116,6 +117,11 @@ public class MainActivity extends BaseActivity {
         @Override
         public int getCount() {
             return list.size();
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+//            super.destroyItem(container, position, object);
         }
     }
     @Override

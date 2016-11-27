@@ -25,7 +25,7 @@ public class SellerEntity {
     private String avatar;
     private String cardno;
     private int id;
-    private String isaceptorders;
+    private int isaceptorders;
     private int ispass;
     private String joinustime;
     private String lat;
@@ -60,11 +60,11 @@ public class SellerEntity {
         this.id = id;
     }
 
-    public String getIsaceptorders() {
+    public int getIsaceptorders() {
         return isaceptorders;
     }
 
-    public void setIsaceptorders(String isaceptorders) {
+    public void setIsaceptorders(int isaceptorders) {
         this.isaceptorders = isaceptorders;
     }
 

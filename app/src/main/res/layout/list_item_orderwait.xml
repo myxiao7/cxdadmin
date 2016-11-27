@@ -11,7 +11,7 @@
             android:id="@+id/orderwait_list_item_icon_img"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@mipmap/icon_user_default"
+            android:src="@mipmap/avator_default"
             />
         <LinearLayout
             android:layout_width="0dp"
@@ -186,12 +186,6 @@
             android:textSize="@dimen/sp18"
             />
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/gray"
-        android:layout_marginTop="5dp"
-        />
 
     <LinearLayout
         style="@style/order_list_lin"
@@ -215,4 +209,10 @@
             android:textSize="@dimen/sp18"
             />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_marginTop="5dp"
+        />
 </LinearLayout>

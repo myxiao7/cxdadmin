@@ -5,13 +5,14 @@
     android:layout_height="match_parent"
     android:descendantFocusability="blocksDescendants"
     >
+
     <LinearLayout
         style="@style/order_list_lin">
         <ImageView
-            android:id="@+id/seller_list_item_icon_img"
+            android:id="@+id/cus_list_item_icon_img"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@mipmap/icon_user_default"
+            android:src="@mipmap/avator_default"
             />
         <LinearLayout
             android:layout_width="0dp"
@@ -21,7 +22,7 @@
             android:paddingLeft="10dp"
             >
             <TextView
-                android:id="@+id/seller_list_item_name_tv"
+                android:id="@+id/cus_list_item_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -30,7 +31,7 @@
                 android:textColor="@color/black"
                 />
             <TextView
-                android:id="@+id/seller_list_item_phone_tv"
+                android:id="@+id/cus_list_item_phone_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -39,7 +40,7 @@
                 android:textColor="@color/black"
                 />
             <TextView
-                android:id="@+id/seller_list_item_date_tv"
+                android:id="@+id/cus_list_item_date_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -51,28 +52,10 @@
                 />
         </LinearLayout>
         <ImageView
-            android:id="@+id/seller_list_item_phone_img"
+            android:id="@+id/cus_list_item_phone_img"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="@mipmap/ic_phone"
-            />
-    </LinearLayout>>
-    <LinearLayout
-        style="@style/order_list_lin"
-        >
-        <TextView
-            android:id="@+id/seller_list_item_verify_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="审核状态：未通过"
-            android:layout_marginRight="5dp"
-            />
-        <TextView
-            android:id="@+id/seller_list_item_give_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="派单状态：正常"
-            android:layout_marginRight="5dp"
             />
     </LinearLayout>
 
@@ -80,10 +63,10 @@
         style="@style/order_list_lin"
         >
         <TextView
-            android:id="@+id/seller_list_item_count_tv"
+            android:id="@+id/cus_list_item_type_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="完成订单数量："
+            android:text=""
             android:layout_marginRight="5dp"
             />
     </LinearLayout>
@@ -91,10 +74,10 @@
         style="@style/order_list_lin"
         >
         <TextView
-            android:id="@+id/seller_list_item_money_tv"
+            android:id="@+id/cus_list_item_color_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="完成订单金额："
+            android:text=""
             android:layout_marginRight="5dp"
             />
     </LinearLayout>
@@ -102,10 +85,10 @@
         style="@style/order_list_lin"
         >
         <TextView
-            android:id="@+id/seller_list_item_card_tv"
+            android:id="@+id/cus_list_item_money_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="银行卡号："
+            android:text="账户余额："
             android:layout_marginRight="5dp"
             />
     </LinearLayout>
@@ -113,10 +96,21 @@
         style="@style/order_list_lin"
         >
         <TextView
-            android:id="@+id/seller_list_item_add_tv"
+            android:id="@+id/cus_list_item_count_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="所在地：10"
+            android:text="红包数量："
+            android:layout_marginRight="5dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/order_list_lin"
+        >
+        <TextView
+            android:id="@+id/cus_list_item_last_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="最后点击红包时间："
             android:layout_marginRight="5dp"
             />
     </LinearLayout>

@@ -1,10 +1,12 @@
 package com.zh.cxdadmin.ui.order;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.google.gson.reflect.TypeToken;
 import com.zh.cxdadmin.R;
@@ -93,6 +95,15 @@ public class OrderfinishFragment extends BaseFragment {
                         getOrderList(false);
                     }
                 },800);
+            }
+        });
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(activity, FinishDetailActivity.class);
+                intent.putExtra("id", list.get(i-1).getOrderid());
+                startActivity(intent);
             }
         });
     }

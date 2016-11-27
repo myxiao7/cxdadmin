@@ -19,11 +19,11 @@ public class HttpPath {
     /**
      * 审核加盟商
      */
-    public static final String PENDING = "xtgl_operator_appVerifyOper.action";
+    public static final String VERIFY = "xtgl_operator_appVerifyOper.action";
     /**
      * 派单
      */
-    public static final String GIVEORDER = "xxtgl_operator_updateIsAceptOrders.action";
+    public static final String GIVEORDER = "chuXiaoDing_orders_appAssignOrder.action";
     /**
      * 获取订单信息
      */
@@ -37,13 +37,13 @@ public class HttpPath {
      */
     public static final String FINDSELLERLIST = "chuXiaoDing_orders_findAllAppOperators.action";
     /**
-     * 技师派单操作
+     * 加盟商派单操作
      */
-    public static final String PENDING2 = "chuXiaoDing_orders_ appAssignOrder.action";
+    public static final String GIVEVERIFY = "xtgl_operator_updateIsAceptOrders.action";
     /**
-     * 获取用户信息列表
+     * 获取客户信息列表
      */
-    public static final String GETUSERINFO = "cxtgl_driverUsers_appQuery.action";
+    public static final String GETCUSTOMERLIST = "xtgl_driverUsers_appQuery.action";
     /**
      * 注销
      */

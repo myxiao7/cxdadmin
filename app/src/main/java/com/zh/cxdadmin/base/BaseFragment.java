@@ -25,11 +25,7 @@ public class BaseFragment extends Fragment {
         Log.d(BaseApplication.LOG_TAG, getClass().getName());
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-//        setHasOptionsMenu(true);
-    }
+
  /*   @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -40,22 +36,6 @@ public class BaseFragment extends Fragment {
         }
     }*/
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        menu.add(Menu.NONE , Menu.FIRST + 1 , 0, "注销").setIcon(R.drawable.ic_power_settings_new_white_24dp)
-        .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case Menu.FIRST + 1:
-                ToastUtil.showShort("logout");
-            break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
   /*  public ActionBar getSupportActionBar(){
         return ((AppCompatActivity)activity).getSupportActionBar();

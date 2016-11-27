@@ -1,5 +1,6 @@
 package com.zh.cxdadmin.adapter;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -22,7 +23,7 @@ import java.util.List;
  * Created by dell on 2016/11/22.
  */
 
-public class SellerAdapter extends BaseAdapter{
+public class SellerAdapter extends BaseAdapter {
     private List<SellerEntity> list;
     private Context context;
 
@@ -50,7 +51,7 @@ public class SellerAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_sellers, parent, false);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_seller, parent, false);
             holder = new ViewHolder();
             holder.iconImg = (ImageView) convertView.findViewById(R.id.seller_list_item_icon_img);
             holder.nameTv = (TextView) convertView.findViewById(R.id.seller_list_item_name_tv);
@@ -63,6 +64,7 @@ public class SellerAdapter extends BaseAdapter{
             holder.moneyTv = (TextView) convertView.findViewById(R.id.seller_list_item_money_tv);
             holder.cardTv = (TextView) convertView.findViewById(R.id.seller_list_item_card_tv);
             holder.addTv = (TextView) convertView.findViewById(R.id.seller_list_item_add_tv);
+            convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
@@ -85,44 +87,41 @@ public class SellerAdapter extends BaseAdapter{
                 }
             });
         }
-
         if (!TextUtils.isEmpty(entity.getJoinustime())) {
             //加入时间
             holder.dateTv.setText(entity.getJoinustime());
         }
-
         //审核状态
         switch (entity.getIspass()){
             case 0:
-                holder.verifyTv.setText("未通过");
+                holder.verifyTv.setText("审核状态：未通过");
                 break;
             case 1:
-                holder.verifyTv.setText("已通过");
+                holder.verifyTv.setText("审核状态：已通过");
                 break;
             case 2:
-                holder.verifyTv.setText("待审核");
+                holder.verifyTv.setText("审核状态：待审核");
                 break;
         }
 
-        if (!TextUtils.isEmpty(entity.getIsaceptorders())) {
-            //派单状态
-            holder.giveTv.setText(entity.getIsaceptorders().equals("0")?"不派单":"正常");
-        }
+
+        holder.giveTv.setText(entity.getIsaceptorders() == 0 ?"派单状态：不派单":"派单状态：正常");
+
         if (!TextUtils.isEmpty(entity.getOrdernum())) {
             //完成数量
-            holder.countTv.setText(entity.getOrdernum());
+            holder.countTv.setText("完成订单数量：" +entity.getOrdernum());
         }
         if (!TextUtils.isEmpty(entity.getOrderamount())) {
             //完成金额
-            holder.moneyTv.setText(entity.getOrderamount());
+            holder.moneyTv.setText("完成订单金额：" +entity.getOrderamount());
         }
         if (!TextUtils.isEmpty(entity.getCardno())) {
             //银行卡号
-            holder.cardTv.setText(entity.getCardno());
+            holder.cardTv.setText("银行卡号：" +entity.getCardno());
         }
         if (!TextUtils.isEmpty(entity.getLocation())) {
             //地址
-            holder.addTv.setText(entity.getLocation());
+            holder.addTv.setText("所在地：" +entity.getLocation());
         }
         return convertView;
     }

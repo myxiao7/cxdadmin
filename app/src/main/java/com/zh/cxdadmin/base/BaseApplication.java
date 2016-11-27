@@ -17,8 +17,14 @@ public class BaseApplication extends Application {
     private static DbManager.DaoConfig daoConfig;
 
     public static final String LOGOUT = "com.zh.xc.logout";
-    //完成订单
-    public static final String ORDERFINISH = "com.zh.xc.orderfinish";
+    //审核通过
+    public static final String VERIFYSUCCESSS = "com.zh.cxdadmin.verifyok";
+    //审核不通过
+    public static final String VERIFYFAILT = "com.zh.cxdadmin.verifyfailt";
+    //待审核
+    public static final String VERIFYWAIT = "com.zh.cxdadmin.verifywait";
+    //待接单
+    public static final String ORDERWAIT = "com.zh.cxdadmin.orderwait";
 
     public synchronized static BaseApplication getInstance(){
         return  application;
@@ -30,9 +36,9 @@ public class BaseApplication extends Application {
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
         x.Ext.init(this);
-        x.Ext.setDebug(false); // 是否输出debug日志
+        x.Ext.setDebug(true); // 是否输出debug日志
         //全局异常捕获
-        CrashHandler.getInstance().init(this);
+//        CrashHandler.getInstance().init(this);
 
         daoConfig =  new DbManager.DaoConfig()
                 .setDbName("jx_db")

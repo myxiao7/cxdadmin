@@ -12,7 +12,7 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.zh.cxdadmin.R;
 import com.zh.cxdadmin.base.BaseFragment;
-import com.zh.cxdadmin.ui.order.testFragment;
+import com.zh.cxdadmin.base.BaseTitleFragment;
 import com.zh.cxdadmin.ui.seller.SellerNotPassFragment;
 import com.zh.cxdadmin.ui.seller.SellerPassFragment;
 import com.zh.cxdadmin.ui.seller.SellerWaitFragment;
@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
  * Created by dell on 2016/11/22.
  */
 
-public class SellerSwitchFragment extends BaseFragment {
+public class SellerSwitchFragment extends BaseTitleFragment {
 
     @Bind(R.id.viewpagertab)
     SmartTabLayout viewpagertab;

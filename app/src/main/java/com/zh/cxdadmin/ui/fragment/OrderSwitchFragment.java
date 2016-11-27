@@ -15,10 +15,10 @@ import com.zh.cxdadmin.R;
 import com.zh.cxdadmin.adapter.OrderServiceAdapter;
 import com.zh.cxdadmin.base.BaseFragment;
 
+import com.zh.cxdadmin.base.BaseTitleFragment;
 import com.zh.cxdadmin.ui.order.OrderServiceFragment;
 import com.zh.cxdadmin.ui.order.OrderWaitFragment;
 import com.zh.cxdadmin.ui.order.OrderfinishFragment;
-import com.zh.cxdadmin.ui.order.testFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
  * Created by dell on 2016/11/22.
  */
 
-public class OrderSwitchFragment extends BaseFragment {
+public class OrderSwitchFragment extends BaseTitleFragment {
     @Bind(R.id.viewpagertab)
     SmartTabLayout viewpagertab;
     @Bind(R.id.viewpager)

@@ -1,10 +1,13 @@
 package com.zh.cxdadmin.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by win7 on 2016/11/23.
  */
 
-public class OrderEntity {
+public class OrderEntity implements Parcelable {
 
     /**
      * acceptdate : 2016-11-10 17:11:12
@@ -199,4 +202,69 @@ public class OrderEntity {
     public void setServicetypename(String servicetypename) {
         this.servicetypename = servicetypename;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.acceptdate);
+        dest.writeString(this.appointment);
+        dest.writeString(this.avartar);
+        dest.writeString(this.carbrank);
+        dest.writeString(this.carcolor);
+        dest.writeString(this.carno);
+        dest.writeString(this.carstyle);
+        dest.writeString(this.finishdate);
+        dest.writeString(this.location);
+        dest.writeString(this.mobile);
+        dest.writeString(this.name);
+        dest.writeString(this.operator);
+        dest.writeString(this.operavartar);
+        dest.writeString(this.opmobile);
+        dest.writeInt(this.orderamount);
+        dest.writeString(this.orderdate);
+        dest.writeString(this.orderid);
+        dest.writeString(this.remark);
+        dest.writeString(this.servicetypename);
+    }
+
+    public OrderEntity() {
+    }
+
+    protected OrderEntity(Parcel in) {
+        this.acceptdate = in.readString();
+        this.appointment = in.readString();
+        this.avartar = in.readString();
+        this.carbrank = in.readString();
+        this.carcolor = in.readString();
+        this.carno = in.readString();
+        this.carstyle = in.readString();
+        this.finishdate = in.readString();
+        this.location = in.readString();
+        this.mobile = in.readString();
+        this.name = in.readString();
+        this.operator = in.readString();
+        this.operavartar = in.readString();
+        this.opmobile = in.readString();
+        this.orderamount = in.readInt();
+        this.orderdate = in.readString();
+        this.orderid = in.readString();
+        this.remark = in.readString();
+        this.servicetypename = in.readString();
+    }
+
+    public static final Parcelable.Creator<OrderEntity> CREATOR = new Parcelable.Creator<OrderEntity>() {
+        @Override
+        public OrderEntity createFromParcel(Parcel source) {
+            return new OrderEntity(source);
+        }
+
+        @Override
+        public OrderEntity[] newArray(int size) {
+            return new OrderEntity[size];
+        }
+    };
 }

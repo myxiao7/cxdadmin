@@ -68,6 +68,8 @@
     <string name="per_add_title">修改地址</string>
     <string name="per_logout">注&#160;&#160;销</string>
 
+    <string name="giveorder">正在派单，请稍候...</string>
+
     <string name="route_failt">生成路线失败</string>
     <string name="route_finish">路线绘制完成</string>
 
