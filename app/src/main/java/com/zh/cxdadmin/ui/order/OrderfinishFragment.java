@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import com.google.gson.reflect.TypeToken;
 import com.zh.cxdadmin.R;
 import com.zh.cxdadmin.adapter.OrderFinishAdapter;
+import com.zh.cxdadmin.adapter.OrderServiceAdapter;
 import com.zh.cxdadmin.adapter.OrderWaitAdapter;
 import com.zh.cxdadmin.base.BaseFragment;
 import com.zh.cxdadmin.config.HttpPath;
@@ -47,7 +48,7 @@ public class OrderfinishFragment extends BaseFragment {
     XListView listview;
 
     private List<OrderEntity> list = new ArrayList<>();
-    private OrderFinishAdapter adapter;
+    private OrderServiceAdapter adapter;
     private UserInfoEntity entity;
     private int pageIndex = 1;
 
@@ -64,7 +65,7 @@ public class OrderfinishFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.listview, container, false);
         ButterKnife.bind(this, view);
         init();
-        adapter = new OrderFinishAdapter(activity, list);
+        adapter = new OrderServiceAdapter(activity, list, true);
         listview.setAdapter(adapter);
         getOrderList(true);
         return view;
@@ -101,8 +102,9 @@ public class OrderfinishFragment extends BaseFragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(activity, FinishDetailActivity.class);
+                Intent intent = new Intent(activity, OrderDetailActivity.class);
                 intent.putExtra("id", list.get(i-1).getOrderid());
+                intent.putExtra("state", true);
                 startActivity(intent);
             }
         });
@@ -135,7 +137,8 @@ public class OrderfinishFragment extends BaseFragment {
                         list.clear();
                         if(jsonModel.hasData()){
                             list = jsonModel.getDataList();
-                            adapter = new OrderFinishAdapter(activity, list);
+                            adapter = new OrderServiceAdapter(activity, list, true
+                            );
                             listview.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
                         }else{

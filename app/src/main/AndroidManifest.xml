@@ -19,7 +19,7 @@
         <activity android:name=".ui.MainActivity"/>
 
         <activity android:name=".ui.order.ServiceDetailActivity"/>
-        <activity android:name=".ui.order.FinishDetailActivity"/>
+        <activity android:name=".ui.order.OrderDetailActivity"/>
         <receiver
             android:name=".receiver.MyReceiver"
             android:enabled="true"

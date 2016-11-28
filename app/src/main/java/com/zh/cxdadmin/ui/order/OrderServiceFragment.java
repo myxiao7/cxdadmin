@@ -64,7 +64,7 @@ public class OrderServiceFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.listview, container, false);
         ButterKnife.bind(this, view);
         init();
-        adapter = new OrderServiceAdapter(activity, list);
+        adapter = new OrderServiceAdapter(activity, list, false);
         listview.setAdapter(adapter);
         getOrderList(true);
         return view;
@@ -100,8 +100,9 @@ public class OrderServiceFragment extends BaseFragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(activity, ServiceDetailActivity.class);
-                intent.putExtra("detail", list.get(i-1));
+                Intent intent = new Intent(activity, OrderDetailActivity.class);
+                intent.putExtra("id", list.get(i-1).getOrderid());
+                intent.putExtra("state", false);
                 startActivity(intent);
             }
         });
@@ -134,7 +135,7 @@ public class OrderServiceFragment extends BaseFragment {
                         list.clear();
                         if(jsonModel.hasData()){
                             list = jsonModel.getDataList();
-                            adapter = new OrderServiceAdapter(activity, list);
+                            adapter = new OrderServiceAdapter(activity, list, false);
                             listview.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
                         }else{

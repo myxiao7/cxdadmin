@@ -10,7 +10,7 @@ import android.os.Parcelable;
 public class OrderEntity implements Parcelable {
 
     /**
-     * acceptdate : 2016-11-10 17:11:12
+     * acceptdate    : 2016-11-10 17:11:12
      * appointment : 2016-11-11  16:00-18:00
      * avartar : http://wx.qlogo.cn/mmopen/uvTjxxWQv7QctExibr141ibUGD9scqiascicTQ1pfqBsgSFcuyicXTQ2DhPl3UBKODGZWllYR6WLqL23kgNYGr9mGzgVWpPTBMiaa1/0
      * carbrank : 大众

@@ -27,6 +27,7 @@ import com.zh.cxdadmin.adapter.SellerAdapter;
 import com.zh.cxdadmin.base.BaseApplication;
 import com.zh.cxdadmin.base.BaseFragment;
 import com.zh.cxdadmin.config.HttpPath;
+import com.zh.cxdadmin.entity.FindSellerEntity;
 import com.zh.cxdadmin.entity.JsonModel;
 import com.zh.cxdadmin.entity.OrderEntity;
 import com.zh.cxdadmin.entity.OrdrListEntity;
@@ -211,8 +212,8 @@ public class OrderWaitFragment extends BaseFragment {
             public void onSuccess(String result) {
                 super.onSuccess(result);
                 LogUtil.d(result);
-                Type type = new TypeToken<JsonModel<List<SellerEntity>>>(){}.getType();
-                JsonModel<List<SellerEntity>> jsonModel = GsonUtil.GsonToBean(result, type);
+                Type type = new TypeToken<JsonModel<List<FindSellerEntity>>>(){}.getType();
+                JsonModel<List<FindSellerEntity>> jsonModel = GsonUtil.GsonToBean(result, type);
                 if(jsonModel.isSuccess()){
                     if(jsonModel.hasData()){
                         showSimpleList(orderId,jsonModel.getDataList(), position);
@@ -238,7 +239,7 @@ public class OrderWaitFragment extends BaseFragment {
      * @param orderID 订单号
      * @param sellerEntity 技师信息
      */
-    private void giveOrder(String orderID,SellerEntity sellerEntity, final int position){
+    private void giveOrder(String orderID,FindSellerEntity sellerEntity, final int position){
         DialogUtils.showProgress(activity, R.string.giveorder);
         String path = HttpPath.getPath(HttpPath.GIVEORDER);
         RequestParams params = HttpUtil.params(path);
@@ -282,7 +283,7 @@ public class OrderWaitFragment extends BaseFragment {
      * @param list 技师列表
      * @param position 第几项
      */
-    public void showSimpleList(final String orderID, final List<SellerEntity> list, final int position) {
+    public void showSimpleList(final String orderID, final List<FindSellerEntity> list, final int position) {
         dialog =  new MaterialDialog.Builder(activity)
                 .title("派单")
                 .adapter(new CusSellerAdapter(list), new MaterialDialog.ListCallback() {

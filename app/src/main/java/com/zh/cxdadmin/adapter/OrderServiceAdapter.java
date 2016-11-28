@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zh.cxdadmin.R;
+import com.zh.cxdadmin.config.HttpPath;
 import com.zh.cxdadmin.entity.OrderEntity;
 import com.zh.cxdadmin.utils.ImageLoaderHelper;
 
@@ -25,10 +26,12 @@ import java.util.List;
 public class OrderServiceAdapter extends BaseAdapter{
     private List<OrderEntity> list;
     private Context context;
+    private boolean isFinish;
 
-    public OrderServiceAdapter(Context context, List<OrderEntity> list) {
+    public OrderServiceAdapter(Context context, List<OrderEntity> list, boolean isFinish) {
         this.list = list;
         this.context = context;
+        this.isFinish = isFinish;
     }
 
     @Override
@@ -67,6 +70,16 @@ public class OrderServiceAdapter extends BaseAdapter{
             holder.dateTv = (TextView) convertView.findViewById(R.id.orderservice_list_item_date_tv);
             holder.dateDesTv = (TextView) convertView.findViewById(R.id.orderservice_list_item_datedes_tv);
             holder.remarkTv = (TextView) convertView.findViewById(R.id.orderservice_list_item_remark_tv);
+
+            holder.iconImg2 = (ImageView) convertView.findViewById(R.id.orderfinish_list_item_icon_img);
+            holder.nameTv2 = (TextView) convertView.findViewById(R.id.orderfinish_list_item_name_tv);
+            holder.phoneTv2 = (TextView) convertView.findViewById(R.id.orderfinish_list_item_phone_tv);
+            holder.phoneBtn2 = (ImageView) convertView.findViewById(R.id.orderfinish_list_item_phone_img);
+            holder.orderTv2 = (TextView) convertView.findViewById(R.id.orderfinish_list_item_ordernum_tv);
+            holder.typeTv2 = (TextView) convertView.findViewById(R.id.orderfinish_list_item_type_tv);
+            holder.giveTimeTv = (TextView) convertView.findViewById(R.id.orderfinish_list_item_givetime_tv);
+            holder.getTimeTv = (TextView) convertView.findViewById(R.id.orderfinish_list_item_gettime_tv);
+            holder.finishTimeTv = (TextView) convertView.findViewById(R.id.orderfinish_list_item_finishtime_tv);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -136,6 +149,46 @@ public class OrderServiceAdapter extends BaseAdapter{
             //备注
             holder.remarkTv.setText(entity.getRemark());
         }*/
+
+        //头像
+        if (!TextUtils.isEmpty(entity.getOperavartar())) {
+            ImageLoaderHelper.getInstance().loadCirPic(holder.iconImg2, HttpPath.HOST + entity.getOperavartar());
+        }
+        //昵称 + 姓名
+        holder.nameTv2.setText(entity.getOperator());
+        if (!TextUtils.isEmpty(entity.getOperator())) {
+            //手机号码
+            holder.phoneTv2.setText(entity.getOpmobile());
+            holder.phoneBtn2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Uri uri = Uri.parse("tel:" + entity.getOpmobile());
+                    context.startActivity(new Intent(Intent.ACTION_DIAL, uri));
+                }
+            });
+        }
+
+        if (!TextUtils.isEmpty(entity.getOrderid())) {
+            //订单号码
+            holder.orderTv2.setText(entity.getOrderid());
+        }
+        //下单时间
+        if (!TextUtils.isEmpty(entity.getOrderdate())) {
+            holder.giveTimeTv.setText(entity.getOrderdate());
+        }
+        //接单时间
+        if (!TextUtils.isEmpty(entity.getAcceptdate())) {
+            holder.getTimeTv.setText(entity.getAcceptdate());
+        }
+        if(isFinish){
+            //完成时间
+            if (!TextUtils.isEmpty(entity.getFinishdate())) {
+                holder.finishTimeTv.setText(entity.getFinishdate());
+            }
+        }else {
+            holder.finishTimeTv.setText("未完成");
+        }
+
         return convertView;
     }
 
@@ -164,5 +217,15 @@ public class OrderServiceAdapter extends BaseAdapter{
         TextView dateTv;//接单时间
         TextView dateDesTv;//接单描述
         TextView remarkTv;//接单描述
+
+        ImageView iconImg2;//头像
+        TextView nameTv2;//姓名
+        TextView phoneTv2;//电话
+        ImageView phoneBtn2;//打电话
+        TextView orderTv2;//订单号
+        TextView typeTv2;//类型
+        TextView giveTimeTv;//下单时间
+        TextView getTimeTv;//接单时间
+        TextView finishTimeTv;//完成时间
     }
 }

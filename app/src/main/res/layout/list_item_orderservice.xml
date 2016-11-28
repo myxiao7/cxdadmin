@@ -5,6 +5,14 @@
     android:layout_height="match_parent"
     android:descendantFocusability="blocksDescendants"
     >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:visibility="gone"
+        />
+
     <LinearLayout
         style="@style/order_list_lin">
         <ImageView
@@ -59,9 +67,11 @@
             android:visibility="gone"
             />
 
-    </LinearLayout>>
+    </LinearLayout>
+
     <LinearLayout
         style="@style/order_list_lin">
+
         <TextView
             android:id="@+id/orderservice_list_item_type_tv"
             android:layout_width="match_parent"
@@ -190,6 +200,7 @@
         android:layout_height="1dp"
         android:background="@color/gray"
         android:layout_marginTop="5dp"
+        android:visibility="gone"
         />
 
     <LinearLayout
@@ -209,6 +220,149 @@
         <TextView
             android:id="@+id/orderservice_list_item_date_tv"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp18"
+            />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/order_list_lin">
+        <ImageView
+            android:id="@+id/orderfinish_list_item_icon_img"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@mipmap/avator_default"
+            />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            >
+            <TextView
+                android:id="@+id/orderfinish_list_item_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text=""
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/orderfinish_list_item_phone_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text=""
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/orderfinish_list_item_order_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text=""
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:visibility="gone"
+                />
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/orderfinish_list_item_phone_img"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@mipmap/ic_phone"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>>
+    <LinearLayout
+        style="@style/order_list_lin">
+        <TextView
+            android:id="@+id/orderfinish_list_item_type_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp16"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/order_list_lin"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="订单号码:"
+            android:layout_marginRight="5dp"
+            />
+        <TextView
+            android:id="@+id/orderfinish_list_item_ordernum_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp18"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/order_list_lin"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下单时间:"
+            android:layout_marginRight="5dp"
+            />
+        <TextView
+            android:id="@+id/orderfinish_list_item_givetime_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp18"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/order_list_lin"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="接单时间:"
+            android:layout_marginRight="5dp"
+            />
+        <TextView
+            android:id="@+id/orderfinish_list_item_gettime_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp18"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/order_list_lin"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="完成时间:"
+            android:layout_marginRight="5dp"
+            />
+        <TextView
+            android:id="@+id/orderfinish_list_item_finishtime_tv"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="@color/black"

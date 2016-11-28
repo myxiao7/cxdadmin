@@ -6,7 +6,7 @@ package com.zh.cxdadmin.entity;
 
 public class OrderDetailEntity {
 private SellerEntity appOperatorDTO;
-private OrderEntity ordersDTO;
+private OrderDetailBean ordersDTO;
 
     public SellerEntity getAppOperatorDTO() {
         return appOperatorDTO;
@@ -16,11 +16,11 @@ private OrderEntity ordersDTO;
         this.appOperatorDTO = appOperatorDTO;
     }
 
-    public OrderEntity getOrdersDTO() {
+    public OrderDetailBean getOrdersDTO() {
         return ordersDTO;
     }
 
-    public void setOrdersDTO(OrderEntity ordersDTO) {
+    public void setOrdersDTO(OrderDetailBean ordersDTO) {
         this.ordersDTO = ordersDTO;
     }
 }

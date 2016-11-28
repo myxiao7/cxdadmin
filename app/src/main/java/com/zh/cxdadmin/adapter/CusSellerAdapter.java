@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zh.cxdadmin.R;
+import com.zh.cxdadmin.config.HttpPath;
+import com.zh.cxdadmin.entity.FindSellerEntity;
 import com.zh.cxdadmin.entity.SellerEntity;
 import com.zh.cxdadmin.utils.ImageLoaderHelper;
 
@@ -24,10 +26,10 @@ import java.util.List;
  */
 
 public class CusSellerAdapter extends BaseAdapter {
-    private List<SellerEntity> list;
+    private List<FindSellerEntity> list;
     private Context context;
 
-    public CusSellerAdapter(List<SellerEntity> list) {
+    public CusSellerAdapter(List<FindSellerEntity> list) {
         this.list = list;
     }
 
@@ -56,15 +58,17 @@ public class CusSellerAdapter extends BaseAdapter {
             holder.nameTv = (TextView) convertView.findViewById(R.id.cus_seller_list_item_name_tv);
             holder.phoneTv = (TextView) convertView.findViewById(R.id.cus_seller_list_item_phone_tv);
             holder.dateTv = (TextView) convertView.findViewById(R.id.cus_seller_list_item_date_tv);
+            holder.countTv = (TextView) convertView.findViewById(R.id.cus_seller_list_item_count_tv);
+            holder.moneyTv = (TextView) convertView.findViewById(R.id.cus_seller_list_item_money_tv);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        final SellerEntity entity = list.get(position);
+        final FindSellerEntity entity = list.get(position);
         //头像
         if (!TextUtils.isEmpty(entity.getAvatar())) {
-            ImageLoaderHelper.getInstance().loadCirPic(holder.iconImg, entity.getAvatar());
+            ImageLoaderHelper.getInstance().loadCirPic(holder.iconImg, HttpPath.HOST + entity.getAvatar());
         }
         //昵称 + 姓名
         holder.nameTv.setText(entity.getName());
@@ -76,6 +80,10 @@ public class CusSellerAdapter extends BaseAdapter {
             //加入时间
             holder.dateTv.setText(entity.getJoinustime());
         }
+        //完成订单数量
+        holder.countTv.setText("完成订单数："+entity.getMonthOrdersNum());
+        //完成订单金额
+        holder.moneyTv.setText("完成订单金额："+entity.getMonthIncome());
         return convertView;
     }
 
@@ -93,5 +101,7 @@ public class CusSellerAdapter extends BaseAdapter {
         TextView nameTv;//姓名
         TextView phoneTv;//电话
         TextView dateTv;//注册日期
+        TextView countTv;//完成订单数量
+        TextView moneyTv;//完成订单金额
     }
 }

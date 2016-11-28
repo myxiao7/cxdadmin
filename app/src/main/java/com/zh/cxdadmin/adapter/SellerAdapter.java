@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zh.cxdadmin.R;
+import com.zh.cxdadmin.config.HttpPath;
 import com.zh.cxdadmin.entity.SellerEntity;
 import com.zh.cxdadmin.utils.ImageLoaderHelper;
 
@@ -72,7 +73,7 @@ public class SellerAdapter extends BaseAdapter {
         final SellerEntity entity = list.get(position);
         //头像
         if (!TextUtils.isEmpty(entity.getAvatar())) {
-            ImageLoaderHelper.getInstance().loadCirPic(holder.iconImg, entity.getAvatar());
+            ImageLoaderHelper.getInstance().loadCirPic(holder.iconImg, HttpPath.HOST + entity.getAvatar());
         }
         //昵称 + 姓名
         holder.nameTv.setText(entity.getName());
