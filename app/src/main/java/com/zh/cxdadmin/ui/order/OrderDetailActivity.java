@@ -143,8 +143,8 @@ public class OrderDetailActivity extends BaseActivity {
         }
 
         if (!TextUtils.isEmpty(entity.getOrdersDTO().getPaydate())) {
-            //支付时间
-            detailCusOrderdateTv.setText("支付时间:" + entity.getOrdersDTO().getPaydate());
+            //加入时间
+            detailCusOrderdateTv.setText(entity.getOrdersDTO().getJoinustime());
         }
         if (!TextUtils.isEmpty(entity.getOrdersDTO().getServicetypename())) {
             //洗车类型
