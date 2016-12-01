@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">cxdadmin</string>
+    <string name="app_name">初小丁管理端</string>
     <string name="code">请输入验证码</string>
     <string name="code_get">点击获取</string>
     <string name="code_wait">%1$s秒后获取</string>
