@@ -1,6 +1,18 @@
 package com.zh.cxdadmin.entity;
 
+import android.app.Activity;
+import android.content.Intent;
+
+import com.zh.cxdadmin.R;
+import com.zh.cxdadmin.config.SharedData;
+import com.zh.cxdadmin.ui.LoginActivity;
+import com.zh.cxdadmin.utils.DialogUtils;
+
 import java.util.List;
+import java.util.Set;
+
+import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.TagAliasCallback;
 
 /**
  * 基础数据模型
@@ -84,11 +96,28 @@ public class JsonModel<T> {
     }
 
     /**
-     * 返回是否成功法国
+     * 返回是否成功返回
      * @return
      */
-    public boolean isSuccess(){
-        return message;
+    public boolean isSuccess(final Activity activity){
+        if(message){
+            return true;
+        }else{
+            if(error_code ==1){
+                DialogUtils.showProgress(activity, R.string.logout);
+                JPushInterface.setAlias(activity, "", new TagAliasCallback() {
+                    @Override
+                    public void gotResult(int i, String s, Set<String> set) {
+                        DialogUtils.stopProgress(activity);
+                        SharedData.saveUserPwd("");
+                        Intent intent1 = new Intent(activity, LoginActivity.class);
+                        activity.startActivity(intent1);
+                        activity.finish();
+                    }
+                });
+            }
+        }
+        return false;
     }
 
     /**

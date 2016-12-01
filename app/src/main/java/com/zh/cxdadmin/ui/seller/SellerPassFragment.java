@@ -151,7 +151,7 @@ public class SellerPassFragment extends BaseFragment {
                 LogUtil.d(result);
                 Type type = new TypeToken<JsonModel<List<SellerEntity>>>(){}.getType();
                 JsonModel<List<SellerEntity>> jsonModel = GsonUtil.GsonToBean(result, type);
-                if(jsonModel.isSuccess()){
+                if(jsonModel.isSuccess(activity)){
                     if(isRefresh){
                         list.clear();
                         if(jsonModel.hasData()){
@@ -179,7 +179,7 @@ public class SellerPassFragment extends BaseFragment {
                     }
 
                 }else{
-                    ToastUtil.showShort("获取失败");
+                    ToastUtil.showShort(jsonModel.getError_desc());
                 }
                 listview.setEnabled(true);
                 listview.stopRefresh();
@@ -214,12 +214,12 @@ public class SellerPassFragment extends BaseFragment {
                 LogUtil.d(result);
                 Type type = new TypeToken<ResultEntity>(){}.getType();
                 ResultEntity resultEntity = GsonUtil.GsonToBean(result, type);
-                if(resultEntity.isSuccee()){
+                if(resultEntity.isSuccee(activity)){
                     ToastUtil.showShort(stateType == 1 ? "恢复派单" : "暂停派单");
                     list.get(position).setIsaceptorders(stateType);
                     adapter.notifyDataSetChanged();
                 }else{
-                    ToastUtil.showShort("操作失败");
+                    ToastUtil.showShort(resultEntity.getError_desc());
                 }
             }
 

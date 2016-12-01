@@ -118,7 +118,7 @@ public class CustomerFragment extends BaseTitleFragment {
                 LogUtil.d(result);
                 Type type = new TypeToken<JsonModel<List<CustomerEntity>>>(){}.getType();
                 JsonModel<List<CustomerEntity>> jsonModel = GsonUtil.GsonToBean(result, type);
-                if(jsonModel.isSuccess()){
+                if(jsonModel.isSuccess(activity)){
                     if(isRefresh){
                         list.clear();
                         if(jsonModel.hasData()){
@@ -146,7 +146,7 @@ public class CustomerFragment extends BaseTitleFragment {
                     }
 
                 }else{
-                    ToastUtil.showShort("获取失败");
+                    ToastUtil.showShort(jsonModel.getError_desc());
                 }
                 listview.setEnabled(true);
                 listview.stopRefresh();

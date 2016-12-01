@@ -153,7 +153,7 @@ public class SellerNotPassFragment extends BaseFragment {
                 LogUtil.d(result);
                 Type type = new TypeToken<JsonModel<List<SellerEntity>>>(){}.getType();
                 JsonModel<List<SellerEntity>> jsonModel = GsonUtil.GsonToBean(result, type);
-                if(jsonModel.isSuccess()){
+                if(jsonModel.isSuccess(activity)){
                     if(isRefresh){
                         list.clear();
                         if(jsonModel.hasData()){
@@ -181,7 +181,7 @@ public class SellerNotPassFragment extends BaseFragment {
                     }
 
                 }else{
-                    ToastUtil.showShort("获取失败");
+                    ToastUtil.showShort(jsonModel.getError_desc());
                 }
                 listview.setEnabled(true);
                 listview.stopRefresh();
@@ -216,7 +216,7 @@ public class SellerNotPassFragment extends BaseFragment {
                 LogUtil.d(result);
                 Type type = new TypeToken<ResultEntity>(){}.getType();
                 ResultEntity resultEntity = GsonUtil.GsonToBean(result, type);
-                if(resultEntity.isSuccee()){
+                if(resultEntity.isSuccee(activity)){
                     ToastUtil.showShort("通过审核成功");
                     //移除当前位置
                     adapter.removeItem(position);
@@ -224,7 +224,7 @@ public class SellerNotPassFragment extends BaseFragment {
                     //更新已通过列表
                     activity.sendBroadcast(intent);
                 }else{
-                    ToastUtil.showShort("操作失败");
+                    ToastUtil.showShort(resultEntity.getError_desc());
                 }
             }
 

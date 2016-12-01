@@ -29,6 +29,7 @@ import com.zh.cxdadmin.base.BaseFragment;
 import com.zh.cxdadmin.config.HttpPath;
 import com.zh.cxdadmin.entity.FindSellerEntity;
 import com.zh.cxdadmin.entity.JsonModel;
+import com.zh.cxdadmin.entity.LoginEntity;
 import com.zh.cxdadmin.entity.OrderEntity;
 import com.zh.cxdadmin.entity.OrdrListEntity;
 import com.zh.cxdadmin.entity.ResultEntity;
@@ -36,6 +37,7 @@ import com.zh.cxdadmin.entity.SellerEntity;
 import com.zh.cxdadmin.entity.UserInfoEntity;
 import com.zh.cxdadmin.http.HttpUtil;
 import com.zh.cxdadmin.http.RequestCallBack;
+import com.zh.cxdadmin.ui.LoginActivity;
 import com.zh.cxdadmin.utils.DbUtils;
 import com.zh.cxdadmin.utils.DialogUtil;
 import com.zh.cxdadmin.utils.DialogUtils;
@@ -153,7 +155,7 @@ public class OrderWaitFragment extends BaseFragment {
                 LogUtil.d(result);
                 Type type = new TypeToken<JsonModel<List<OrderEntity>>>(){}.getType();
                 JsonModel<List<OrderEntity>> jsonModel = GsonUtil.GsonToBean(result, type);
-                if(jsonModel.isSuccess()){
+                if(jsonModel.isSuccess(activity)){
                     if(isRefresh){
                         list.clear();
                         if(jsonModel.hasData()){
@@ -181,7 +183,7 @@ public class OrderWaitFragment extends BaseFragment {
                     }
 
                 }else{
-                    ToastUtil.showShort("获取失败");
+                    ToastUtil.showShort(jsonModel.getError_desc());
                 }
                 listview.setEnabled(true);
                 listview.stopRefresh();
@@ -214,7 +216,7 @@ public class OrderWaitFragment extends BaseFragment {
                 LogUtil.d(result);
                 Type type = new TypeToken<JsonModel<List<FindSellerEntity>>>(){}.getType();
                 JsonModel<List<FindSellerEntity>> jsonModel = GsonUtil.GsonToBean(result, type);
-                if(jsonModel.isSuccess()){
+                if(jsonModel.isSuccess(activity)){
                     if(jsonModel.hasData()){
                         showSimpleList(orderId,jsonModel.getDataList(), position);
                     }else {
@@ -257,13 +259,13 @@ public class OrderWaitFragment extends BaseFragment {
                 LogUtil.d(result);
                 Type type = new TypeToken<ResultEntity>(){}.getType();
                 ResultEntity resultEntity = GsonUtil.GsonToBean(result, type);
-                if(resultEntity.isSuccee()){
+                if(resultEntity.isSuccee(activity)){
                     ToastUtil.showShort("派单成功");
                     //移除当前订单
                     adapter.removeItem(position);
                     adapter.notifyDataSetChanged();
                 }else{
-                    ToastUtil.showShort("派单失败");
+                    ToastUtil.showShort(resultEntity.getError_desc());
                 }
             }
 

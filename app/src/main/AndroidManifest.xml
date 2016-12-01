@@ -18,7 +18,6 @@
         </activity>
         <activity android:name=".ui.MainActivity"/>
 
-        <activity android:name=".ui.order.ServiceDetailActivity"/>
         <activity android:name=".ui.order.OrderDetailActivity"/>
         <receiver
             android:name=".receiver.MyReceiver"
@@ -35,7 +34,7 @@
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
                 <!-- 接收网络变化 连接/断开 since 1.6.3 -->
                 <action android:name="cn.jpush.android.intent.CONNECTION" />
-                <category android:name="com.zh.xiche" />
+                <category android:name="com.zh.cxdadmin" />
             </intent-filter>
         </receiver>
     </application>

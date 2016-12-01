@@ -119,7 +119,7 @@ public class SellerWaitFragment extends BaseFragment {
                         .setOnItemClickListener(new OnItemClickListener() {
                             @Override
                             public void onItemClick(Object o, int position) {
-                                ToastUtil.showShort(""+ position);
+//                                ToastUtil.showShort(""+ position);
                                 if(position!=-1){
                                     verify(list.get(i-1).getId()+"", position == 0 ? 1 : 0, i-1);
                                 }
@@ -153,7 +153,7 @@ public class SellerWaitFragment extends BaseFragment {
                 LogUtil.d(result);
                 Type type = new TypeToken<JsonModel<List<SellerEntity>>>(){}.getType();
                 JsonModel<List<SellerEntity>> jsonModel = GsonUtil.GsonToBean(result, type);
-                if(jsonModel.isSuccess()){
+                if(jsonModel.isSuccess(activity)){
                     if(isRefresh){
                         list.clear();
                         if(jsonModel.hasData()){
@@ -181,7 +181,7 @@ public class SellerWaitFragment extends BaseFragment {
                     }
 
                 }else{
-                    ToastUtil.showShort("获取失败");
+                    ToastUtil.showShort(jsonModel.getError_desc());
                 }
                 listview.setEnabled(true);
                 listview.stopRefresh();
@@ -220,14 +220,14 @@ public class SellerWaitFragment extends BaseFragment {
                 LogUtil.d(result);
                 Type type = new TypeToken<ResultEntity>(){}.getType();
                 ResultEntity resultEntity = GsonUtil.GsonToBean(result, type);
-                if(resultEntity.isSuccee()){
+                if(resultEntity.isSuccee(activity)){
                     ToastUtil.showShort(stateType == 1 ? "通过审核成功" : "商家未通过审核");
                     //移除当前位置
                     adapter.removeItem(position);
                     Intent intent = new Intent(stateType == 1 ? BaseApplication.VERIFYSUCCESSS : BaseApplication.VERIFYFAILT);
                     activity.sendBroadcast(intent);
                 }else{
-                    ToastUtil.showShort("操作失败");
+                    ToastUtil.showShort(resultEntity.getError_desc());
                 }
             }
 

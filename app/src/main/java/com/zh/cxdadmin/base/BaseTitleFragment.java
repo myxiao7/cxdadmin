@@ -74,7 +74,7 @@ public class BaseTitleFragment extends BaseFragment {
                 Type type = new TypeToken<ResultEntity>() {
                 }.getType();
                 ResultEntity resultEntity = GsonUtil.GsonToBean(result, type);
-                if (resultEntity.isSuccee()) {
+                if (resultEntity.isSuccee(activity)) {
                     JPushInterface.setAlias(activity, "", new TagAliasCallback() {
                         @Override
                         public void gotResult(int i, String s, Set<String> set) {
@@ -88,7 +88,7 @@ public class BaseTitleFragment extends BaseFragment {
                     });
                 } else {
                     DialogUtils.stopProgress(activity);
-                    ToastUtil.showShort("注销失败");
+                    ToastUtil.showShort(resultEntity.getError_desc());
                 }
             }
 

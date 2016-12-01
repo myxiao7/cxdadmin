@@ -19,6 +19,7 @@ import com.zh.cxdadmin.entity.OrderEntity;
 import com.zh.cxdadmin.entity.UserInfoEntity;
 import com.zh.cxdadmin.http.HttpUtil;
 import com.zh.cxdadmin.http.RequestCallBack;
+import com.zh.cxdadmin.ui.LoginActivity;
 import com.zh.cxdadmin.utils.DbUtils;
 import com.zh.cxdadmin.utils.GsonUtil;
 import com.zh.cxdadmin.utils.ToastUtil;
@@ -130,7 +131,7 @@ public class OrderServiceFragment extends BaseFragment {
                 LogUtil.d(result);
                 Type type = new TypeToken<JsonModel<List<OrderEntity>>>(){}.getType();
                 JsonModel<List<OrderEntity>> jsonModel = GsonUtil.GsonToBean(result, type);
-                if(jsonModel.isSuccess()){
+                if(jsonModel.isSuccess(activity)){
                     if(isRefresh){
                         list.clear();
                         if(jsonModel.hasData()){
@@ -158,7 +159,7 @@ public class OrderServiceFragment extends BaseFragment {
                     }
 
                 }else{
-                    ToastUtil.showShort("获取失败");
+                    ToastUtil.showShort(jsonModel.getError_desc());
                 }
                 listview.setEnabled(true);
                 listview.stopRefresh();
